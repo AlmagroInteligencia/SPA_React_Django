@@ -27,6 +27,7 @@ const TaskList=()=>{
                 <TaskItem key={task.id} task={task}/>
             ))}
         </div>
+
     )
 };
 

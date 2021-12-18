@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './index.css';
 import App from './App';
@@ -11,15 +11,17 @@ import TaskList from './components/Task/TaskList';
 import TaskForm from './components/Task/TaskForm';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <div>
       <Navbar/>
-      <div className="container my-4">
-          <Switch>
-              <Route exact path="/" component={TaskList}/>
-              <Route path="/taskform" component={TaskForm}/> 
-          </Switch>
+      <div className="container bg-black p-4">
+          <div>
+              <TaskForm/>
+          </div>
+          <div>
+              <TaskList/>
+          </div>
       </div>
-      </BrowserRouter>,    
+  </div>,    
   
   document.getElementById('root')
 );
