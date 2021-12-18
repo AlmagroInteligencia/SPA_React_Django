@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import TaskItem from './TaskItem';
+
 import * as TaskServer from './TaskServer';
 
 const TaskList=()=>{
@@ -20,9 +22,9 @@ const TaskList=()=>{
     },[]);
 
     return (
-        <div>
+        <div className="row">
             {tasks.map((task) => (
-                <h2>{task.name}</h2>
+                <TaskItem key={task.id} task={task}/>
             ))}
         </div>
     )

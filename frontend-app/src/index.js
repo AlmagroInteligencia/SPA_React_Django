@@ -1,16 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import Navbar from './components/NavBar/Navbar';
 import TaskList from './components/Task/TaskList';
+import TaskForm from './components/Task/TaskForm';
 
 ReactDOM.render(
-  //<React.StrictMode>
-  //  <App />
-  //</React.StrictMode>,
-  <TaskList/>,
+  <BrowserRouter>
+      <Navbar/>
+      <div className="container my-4">
+          <Switch>
+              <Route exact path="/" component={TaskList}/>
+              <Route path="/taskform" component={TaskForm}/> 
+          </Switch>
+      </div>
+      </BrowserRouter>,    
+  
   document.getElementById('root')
 );
 
