@@ -3,7 +3,7 @@
 echo "Welcome to this SPA ToDo List"
 cd backend-app
 pip install -r requirements.txt
-python manage.py runserver
+(python manage.py runserver || python3 manage.py runserver) &
 cd ..
 cd frontend-app
-npm start
+npm start 
