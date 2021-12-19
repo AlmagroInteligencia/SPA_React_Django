@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import * as TaskServer from "./TaskServer";
+
 const TaskForm = () => {
 
     const initialState = {id:0, name:"", body:""};
@@ -8,6 +10,21 @@ const TaskForm = () => {
 
     const handleInputChange = (e) => {
         setTask({...task, [e.target.name]: e.target.value});
+    };
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let res;
+            res = await TaskServer.addTask(task);
+            const data = await res.json();
+            if (data.message === "Success") {
+                setTask(initialState);
+            }
+            
+        } catch (error) {
+            console.log(error);
+        }
     };
     
     return (
