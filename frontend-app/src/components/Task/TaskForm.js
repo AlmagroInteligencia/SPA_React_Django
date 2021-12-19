@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import * as TaskServer from "./TaskServer";
 
 const TaskForm = () => {
-
+    
     const initialState = {id:0, name:"", body:""};
     
     const [task,setTask] = useState(initialState);
@@ -21,7 +21,17 @@ const TaskForm = () => {
             if (data.message === "Success") {
                 setTask(initialState);
             }
-            
+        } catch (error) {
+            console.log(error);
+        }
+    }; 
+    
+    const getTask = async (taskId) => {
+        try {
+            const res = await TaskServer.getTask(taskId);
+            const data = await res.json();
+            const {name, body} = data.task;
+            setTask({name, body});
         } catch (error) {
             console.log(error);
         }
@@ -31,7 +41,7 @@ const TaskForm = () => {
         
                 <div className="card text-white bg-primary mb-4">
                     <div className="card-body">
-                        <form id="tarea-form" onSubmit={handleSubmit}>
+                        <form id="tarea-form">
                             <input type="hidden" id="id-task"/>
                             <div className="form-group">
                                 <input type="text" className="form-control" id="name-task" name="name" value={task.name} onChange={handleInputChange} placeholder="Task name"/>
@@ -40,7 +50,7 @@ const TaskForm = () => {
                                 <textarea id="body-task" className="form-control" name="body" value={task.body} onChange={handleInputChange} placeholder="Task body" cols="60" rows="3"></textarea>
                             </div>
                             <div className="d-grid gap-2">
-                                <button type="submit" className="btn btn-dark text-center">Save Task</button>
+                                <button onClick={handleSubmit} className="btn btn-dark text-center">Add Task</button>
                             </div>
                         </form>
                     </div>
