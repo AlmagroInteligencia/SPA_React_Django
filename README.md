@@ -30,7 +30,7 @@ also listed in the file "package.json").
 Django runs on port 8000 and React runs on port 3000. Please make sure you do not
 have anything alse running on that ports, otherwise, this app will not work.
 
-Also, it is recomendly that you activate a virtual enviorement, i.e. anaconda or
+Also, it is recommended that you activate a virtual enviorement, i.e. anaconda or
 virtualenv. That is to avoid having conflicts with the dependencies of this
 particular project with your computer (i am reffering particularly to python).
 
